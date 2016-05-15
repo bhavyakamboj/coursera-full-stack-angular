@@ -22,7 +22,8 @@ var gulp = require('gulp'),
 	});
 
 	gulp.task('usemin', ['jshint'], function () {
-		return gulp.src('./app/*.html')
+		return gulp.src(['./app/*.html',
+				'./app/**/*.html'])
 			.pipe(usemin({
 				css:[minifycss(),rev()],
 				js:[ngannotate(),uglify(),rev()]
