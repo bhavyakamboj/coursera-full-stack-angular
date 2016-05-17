@@ -20,7 +20,7 @@ var gulp = require('gulp'),
 		.pipe(jshint())
 		.pipe(jshint.reporter(stylish));
 	});
-
+ 
 	gulp.task('usemin', ['jshint'], function () {
 		return gulp.src(['./app/*.html',
 				'./app/**/*.html'])
