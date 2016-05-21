@@ -6,7 +6,7 @@
       "image": "images/uthapizza.png",
       "category": "mains",
       "label": "Hot",
-      "price": "4.99",
+      "price": 4.99,
       "description": "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.",
       "comments": [
         {
@@ -38,6 +38,42 @@
           "comment": "It's your birthday, we're gonna party!",
           "author": "25 Cent",
           "date": "2011-12-02T17:57:28.556094Z"
+        },
+        {
+          "rating": 5,
+          "comment": "",
+          "author": "",
+          "date": "2016-05-21T12:01:12.670Z"
+        },
+        {
+          "rating": 5,
+          "comment": "",
+          "author": "",
+          "date": "2016-05-21T12:02:29.208Z"
+        },
+        {
+          "rating": 5,
+          "comment": "",
+          "author": "",
+          "date": "2016-05-21T12:02:31.727Z"
+        },
+        {
+          "rating": 5,
+          "comment": "",
+          "author": "",
+          "date": "2016-05-21T12:04:04.665Z"
+        },
+        {
+          "rating": 5,
+          "comment": "this is a horrible shitty dish",
+          "author": "test user",
+          "date": "2016-05-21T12:15:22.691Z"
+        },
+        {
+          "rating": "1",
+          "comment": "comment just works",
+          "author": "bhavya",
+          "date": "2016-05-21T12:15:43.410Z"
         }
       ]
     },
@@ -209,7 +245,5 @@
       "description": "Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!"
     }
   ],
-  "feedback": [
-
-  ]
+  "feedback": []
 }
