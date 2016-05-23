@@ -31,9 +31,9 @@
                <label for="order" style="color:silver">
                    Sort by
                </label>
-               <input type="text" id="order" ng-model="filtText">
+               <input type="text" id="order" ng-model="orderText">
             </div>
-            <div class="col-xs-9 col-xs-offset-1" ng-repeat="comment in dish.comments | orderBy: filtText">
+            <div class="col-xs-9 col-xs-offset-1" ng-repeat="comment in dish.comments | orderBy: orderText">
                 <blockquote>
                   <p>{{comment.rating}} Stars</p>
                   <p>{{comment.comment}}</p>
