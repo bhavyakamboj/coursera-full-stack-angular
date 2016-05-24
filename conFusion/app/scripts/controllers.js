@@ -57,7 +57,19 @@ angular.module('confusionApp')
 
     }])
 
-    .controller('FeedbackController', ['$scope', function($scope) {
+    .controller('FeedbackController', ['$scope','feedbackFactory', function($scope,feedbackFactory) {
+
+        feedbackFactory.getFeedbacks().query(
+            function(response){
+                $scope.feedbacks = response;
+            },
+            function(response) {
+                $scope.message = "Error: "+response.status + " " + response.statusText;
+                console.log($scope.message);
+            }
+        );
+
+
 
         $scope.sendFeedback = function() {
 
@@ -65,14 +77,15 @@ angular.module('confusionApp')
 
             if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
                 $scope.invalidChannelSelection = true;
-                console.log('incorrect');
+                //console.log('incorrect');
             }
             else {
+                feedbackFactory.getFeedbacks().add($scope.feedback);
                 $scope.invalidChannelSelection = false;
                 $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
                 $scope.feedback.mychannel="";
                 $scope.feedbackForm.$setPristine();
-                console.log($scope.feedback);
+                //console.log($scope.feedback);
             }
         };
     }])
@@ -116,8 +129,29 @@ angular.module('confusionApp')
 
 // implement the IndexController and About Controller here
     .controller('IndexController', ['$scope', '$stateParams', 'menuFactory', 'corporateFactory', function($scope,$stateParams,menuFactory,corporateFactory) {
-        $scope.promotion = menuFactory.getPromotion(0);
-        $scope.leader = corporateFactory.getLeader(3);
+        menuFactory.getPromotion().get({id:0})
+            .$promise.then(
+                function(response){
+                    $scope.promotion = response;
+                    $scope.showPromotion = true;
+                },
+                function(response){
+                    $scope.message = "Error: "+response.status+" "+response.statusText;
+                }
+            );
+
+        $scope.showChef = false;
+
+        corporateFactory.getLeaders().get({id:3})
+            .$promise.then(
+                function(response){
+                    $scope.showChef = true;
+                    $scope.chef = response;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+            );
 
         $scope.showDish = false;
         $scope.message = "Loading ...";
@@ -135,7 +169,19 @@ angular.module('confusionApp')
     }])
 
     .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-        $scope.leaders = corporateFactory.getLeaders();
+        $scope.showLeaders = false;
+        $scope.message = "Loading ...";
+
+        corporateFactory.getLeaders().query(
+            function(response){
+                $scope.leaders = response;
+                $scope.showLeaders = true;
+            },
+            function(response){
+                $scope.message = "Error :"+response.status+" "+response.statusText;
+            }
+        );
+
     }])
 ;
 
